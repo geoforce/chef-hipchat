@@ -20,9 +20,11 @@
 chef_gem 'httparty' do
   version node['hipchat']['httparty_version']
   action :nothing
+  compile_time true if Chef::Resource::ChefGem.instance_methods(false).include?(:compile_time)
 end.run_action(:install)
 
 chef_gem 'hipchat' do
   version node['hipchat']['hipchat_version']
   action :nothing
+  compile_time true if Chef::Resource::ChefGem.instance_methods(false).include?(:compile_time)
 end.run_action(:install)
